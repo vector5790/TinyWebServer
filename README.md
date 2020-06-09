@@ -20,5 +20,6 @@
 ***
 ### 多线程
 
+pthread_creat()
 ***
 ### telnet测试
