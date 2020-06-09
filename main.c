@@ -11,7 +11,9 @@
 #include <sys/epoll.h>
 #include <pthread.h>
 #include <string.h>
-
+#include "./http/http_conn.h"
+#include "./threadpool/threadpool.h"
+#include "./lock/lock.h"
 #define MAX_FD 65536           //最大文件描述符
 #define MAX_EVENT_NUMBER 10000 //最大事件数
 #define BUFFER_SIZE 1024
@@ -20,62 +22,13 @@ struct fds{
     int epollfd;
     int sockfd;
 };
-/*使用epoll ET模式的文件描述符应该是非阻塞的。如果文件描述符是阻塞的，那么读或写操作会因为没有后续事件而
-一直处于阻塞状态*/
-int setnonblocking(int fd){
-    int old_option=fcntl(fd,F_GETFL);
-    int new_option=old_option|O_NONBLOCK;
-    fcntl(fd,F_SETFL,new_option);
-    return old_option;
-}
-/*将fd上的EPOLLIN和EPOLLET事件注册到epollfd指示的内核事件表中，参数oneshot指示是否注册fd上的EPOLLONESHOT事件*/
-void addfd(int epollfd,int fd,int oneshot){
-    epoll_event event;
-    event.data.fd=fd;
-    event.events=EPOLLIN|EPOLLET;
-    if(oneshot){
-        event.events|=EPOLLONESHOT;
-    }
-    epoll_ctl(epollfd,EPOLL_CTL_ADD,fd,&event);
-    setnonblocking(fd);
-}
-//重置该socket上的注册事件，使epoll有机会再次检测到该socket上的的EPOLLIN事件，进而使其他线程有机会为该socket服务
-void reset_oneshot(int epollfd,int fd){
-    epoll_event event;
-    event.data.fd=fd;
-    event.events=EPOLLIN|EPOLLET|EPOLLONESHOT;
-    epoll_ctl(epollfd,EPOLL_CTL_MOD,fd,&event);
-}
-/*工作线程*/
-void* worker(void* arg){
-    int sockfd=((fds*)arg)->sockfd;
-    int epollfd=((fds*)arg)->epollfd;
-    printf("start new thread to receive data on fd: %d\n",sockfd);
-    char buf[BUFFER_SIZE];
-    memset(buf,'\0',BUFFER_SIZE);
-    /*循环读取sockfd上的数据直到遇到EAGAIN错误*/
-    while(1){
-        int ret=recv(sockfd,buf,BUFFER_SIZE-1,0);
-        if(ret==0){
-            close(sockfd);
-            printf("foreiner closed the connection\n");
-            break;
-        }
-        else if(ret<0){
-            /*对于非阻塞IO，下列条件成立表示数据已经全部读取完毕。此后要重置注册事件*/
-            if(errno==EAGAIN){
-                reset_oneshot(epollfd,sockfd);
-                printf("read later\n");
-                break;
-            }
-        }
-        else{
-            printf("get content: %s\n",buf);
-            /*休眠5s，模拟数据处理*/
-            sleep(5);
-        }
-    }
-    printf("end thread to receiving data on fd: %d\n",sockfd);
+
+extern int addfd(int epollfd,int fd,int oneshot);
+extern int removefd(int epollfd,int fd);
+void show_error(int connfd,const char* info){
+    printf("%s",info);
+    send(connfd,info,strlen(info),0);
+    close(connfd);
 }
 int main(int argc, char *argv[]){
     if(argc<2){
@@ -83,6 +36,20 @@ int main(int argc, char *argv[]){
         return 1;
     }
     int port = atoi(argv[1]);
+
+    //创建线程池
+    threadpool<http_conn>* pool=NULL;
+    try{
+        pool=new threadpool<http_conn>;
+    }
+    catch(...){
+        return 1;
+    }
+    //预先为每个可能客户连接分配一个http_conn对象
+    http_conn* users=new http_conn[MAX_FD];
+    assert(users);
+    int user_count=0;
+
     //创建套接字
     int listenfd=socket(PF_INET,SOCK_STREAM,0);
     assert(listenfd>0);
@@ -92,11 +59,11 @@ int main(int argc, char *argv[]){
     address.sin_family=AF_INET;
     address.sin_addr.s_addr=htonl(INADDR_ANY);
     address.sin_port=htons(port);
-/*
+
     //设置端口复用
-    int flag=1;
-    setsockopt(listenfd,SOL_SOCKET,SO_REUSEADDR,&flag,sizeof(flag));
-*/
+    struct linger tmp={1,0};
+    setsockopt(listenfd,SOL_SOCKET,SO_LINGER,&tmp,sizeof(tmp));
+
     //绑定端口
     ret=bind(listenfd,(struct sockaddr *)&address,sizeof(address));
     assert(ret>=0);
@@ -109,10 +76,10 @@ int main(int argc, char *argv[]){
     assert(epollfd!=-1);
 
     addfd(epollfd,listenfd,false);
-    int cnt=0;
-    while(1){
+    http_conn::m_epollfd=epollfd;
+    while(true){
         int number = epoll_wait(epollfd, events, MAX_EVENT_NUMBER, -1);
-        if(number<0){
+        if((number<0)&&(errno!=EINTR)){
             printf("epoll failure\n");
             break;
         }
@@ -123,16 +90,35 @@ int main(int argc, char *argv[]){
                 struct sockaddr_in client_address;
                 socklen_t client_addrlength=sizeof(client_address);
                 int connfd=accept(listenfd,(struct sockaddr*)&client_address,&client_addrlength);
-                addfd(epollfd,connfd,true);
+                if(connfd<0){
+                    printf("errno is: %d\n",errno);
+                    continue;
+                }
+                if(http_conn::m_user_count>=MAX_FD){
+                    show_error(connfd,"Internal server busy");
+                    continue;
+                }
+                /*初始化客户连接*/
+                users[connfd].init(connfd,client_address);
+            }
+            else if(events[i].events&(EPOLLRDHUP|EPOLLHUP|EPOLLERR)){
+                /*有异常，直接关闭客户连接*/
+                users[sockfd].close_conn();
             }
             //处理客户连接上接收到的数据
             else if(events[i].events&EPOLLIN){
-                pthread_t thread;
-                fds fds_for_new_worker;
-                fds_for_new_worker.epollfd=epollfd;
-                fds_for_new_worker.sockfd=sockfd;
-                pthread_create(&thread,NULL,worker,(void*)&fds_for_new_worker);
+                if(users[sockfd].read()){
+                    pool->append(users+sockfd);
+                }
+                else{
+                    users[sockfd].close_conn();
+                }
             }
+            /*else if(events[i].events&EPOLLOUT){
+                if(!users[sockfd].write()){
+                    users[sockfd].close_conn;
+                }
+            }*/
             else{
                 printf("something else happened\n");
             }
@@ -140,5 +126,7 @@ int main(int argc, char *argv[]){
     }
     close(epollfd);
     close(listenfd);
+    delete [] users;
+    delete pool;
     return 0;
 }
