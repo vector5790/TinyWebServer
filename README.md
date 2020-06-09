@@ -23,3 +23,4 @@
 pthread_creat()
 ***
 ### telnet测试
+test
