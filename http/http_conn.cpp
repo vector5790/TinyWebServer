@@ -1,12 +1,6 @@
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <stdio.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <netinet/in.h>
-
 #include "http_conn.h"
+#include <map>
+#include <fstream>
 /*定义http响应的一些状态信息*/
 const char* ok_200_title="OK";
 const char* error_400_title="Bad Request";
@@ -281,6 +275,152 @@ http_conn::HTTP_CODE http_conn::do_request(){
     close(fd);
     return FILE_REQUEST;
 }
+//取消内存映射
+void http_conn::unmap(){
+    if(m_file_address){
+        munmap(m_file_address,m_file_stat.st_size);
+        m_file_address=0;
+    }
+}
+/*写HTTP响应*/
+bool http_conn::write(){
+    int temp=0;
+    int bytes_to_send=m_write_index;
+    int bytes_have_send=0;
+    if(bytes_to_send==0){
+        modfd(m_epollfd,m_sockfd,EPOLLIN);
+        init();
+        return true;
+    }
+    while(1){
+        temp=writev(m_sockfd,m_iv,m_iv_count);
+        if(temp<=-1){
+            //缓冲区没有空间，等待下一轮EPOLLOUT 事件
+            if(errno==EAGAIN){
+                modfd(m_epollfd,m_sockfd,EPOLLOUT);
+                return true;
+            }    
+            unmap();
+            return false;
+        }
+        bytes_to_send-=temp;
+        bytes_have_send+=temp;
+        if(bytes_to_send<=0){
+            unmap();
+            if(m_linger){
+                init();
+                modfd(m_epollfd,m_sockfd,EPOLLIN);
+                return true;
+            }
+            else{
+                modfd(m_epollfd,m_sockfd,EPOLLIN);
+                return false;
+            }
+        }
+    }   
+}
+
+bool http_conn::add_response(const char* format,...){
+    if(m_write_index>=WRITE_BUFFER_SIZE){
+        return false;
+    }
+    //定义可变参数列表
+    va_list arg_list;
+    //将变量arg_list初始化为传入参数
+    va_start(arg_list,format);
+    //将数据format从可变参数列表写入缓冲区写，返回写入数据的长度
+    int len=vsnprintf(m_write_buf+m_write_index,WRITE_BUFFER_SIZE-1-m_write_index,format,arg_list);
+    if(len>=(WRITE_BUFFER_SIZE-1-m_write_index)){
+        return false;
+    }
+    m_write_index+=len;
+    //清空可变参列表
+    va_end(arg_list);
+    return true;
+}
+bool http_conn::add_content(const char* content){
+    return add_response("%s",content);
+}
+bool http_conn::add_status_line(int status,const char* title){
+    return add_response("%s %d %s\r\n","HTTP/1.1",status,title);
+}
+bool http_conn::add_headers(int content_length){
+    add_content_length(content_length);
+    add_linger();
+    add_black_line();
+}
+bool http_conn::add_content_length(int content_length){
+    return add_response("Content-Length: %d\r\n",content_length);
+}
+bool http_conn::add_linger(){
+    return add_response("Connection: %s\r\n",(m_linger==true)?"keep-live" : "close");
+}
+bool http_conn::add_black_line(){
+    return add_response("%s","\r\n");
+}
+bool http_conn::process_write(HTTP_CODE ret){
+    switch(ret){
+        case INTERNAL_ERROR:{
+            add_status_line(500,error_500_title);
+            add_headers(strlen(error_500_form));
+            if(!add_content(error_500_form)){
+                return false;
+            }
+            break;
+        }
+        case BAD_REQUEST:{
+            add_status_line(400,error_400_title);
+            add_headers(strlen(error_400_form));
+            if(!add_content(error_400_form)){
+                return false;
+            }
+            break;
+        }
+        case NO_RESOURCE:{
+            add_status_line(404,error_404_title);
+            add_headers(strlen(error_404_form));
+            if(!add_content(error_404_form)){
+                return false;
+            }
+            break;
+        }
+        case FORBIDDEN_REQUEST:{
+            add_status_line(403,error_403_title);
+            add_headers(strlen(error_403_form));
+            if(!add_content(error_403_form)){
+                return false;
+            }
+            break;
+        }
+        case FILE_REQUEST:{
+            add_status_line(200,ok_200_title);
+            if(m_file_stat.st_size!=0){
+                add_headers(m_file_stat.st_size);
+                m_iv[0].iov_base=m_write_buf;
+                m_iv[0].iov_len=m_write_index;
+                m_iv[0].iov_base=m_file_address;
+                m_iv[0].iov_len=m_file_stat.st_size;
+                m_iv_count=2;
+                return true;
+            }
+            else{
+                const char* ok_string="<html><body></body></html>";
+                add_headers(strlen(ok_string));
+                if(!add_content(ok_string)){
+                   return false;
+                }
+            }
+            break;
+        }
+        default:{
+            return false;
+        }
+    }
+    m_iv[0].iov_base=m_write_buf;
+    m_iv[0].iov_len=m_write_index;
+    m_iv_count=1;
+    return true;
+}
 void http_conn::process(){
     HTTP_CODE read_ret=process_read();
     /*请求不完整，需要继续接收数据*/
@@ -288,5 +428,9 @@ void http_conn::process(){
         modfd(m_epollfd,m_sockfd,EPOLLIN);
         return ;
     }
-
+    bool write_ret=process_write(read_ret);
+    if(!write_ret){
+        close_conn();
+    }
+    modfd(m_epollfd,m_sockfd,EPOLLOUT);
 }

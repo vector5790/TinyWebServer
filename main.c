@@ -114,11 +114,11 @@ int main(int argc, char *argv[]){
                     users[sockfd].close_conn();
                 }
             }
-            /*else if(events[i].events&EPOLLOUT){
+            else if(events[i].events&EPOLLOUT){
                 if(!users[sockfd].write()){
-                    users[sockfd].close_conn;
+                    users[sockfd].close_conn();
                 }
-            }*/
+            }
             else{
                 printf("something else happened\n");
             }

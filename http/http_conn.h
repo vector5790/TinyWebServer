@@ -18,7 +18,8 @@
 #include <stdarg.h>
 #include <errno.h>
 #include "../lock/lock.h"
-
+#include <sys/wait.h>
+#include <sys/uio.h>
 class http_conn{
 public:
     /*文件名的最大长度*/
@@ -84,9 +85,9 @@ private:
     /*解析HTTP请求*/
     HTTP_CODE process_read();
     /*填充HTTP应答*/
-    bool processs_write(HTTP_CODE ret);
+    bool process_write(HTTP_CODE ret);
 
-    /*被proces_read调用以解析HTTP请求*/
+    /*下面这一组函数被proces_read调用以解析HTTP请求*/
     HTTP_CODE parse_request_line(char* text);
     HTTP_CODE parse_header(char* text);
     HTTP_CODE parse_content(char* text);
@@ -96,7 +97,15 @@ private:
     };
     LINE_STATUS parse_line();
 
-    /*process_write*/
+    /*下面这一组函数被proces_write调用以填充HTTP应答*/
+    void unmap();
+    bool add_response(const char* format,...);
+    bool add_content(const char* content);
+    bool add_status_line(int status,const char* title);
+    bool add_headers(int content_length);
+    bool add_content_length(int content_length);
+    bool add_linger();
+    bool add_black_line();
 
 public:
     static int m_epollfd;
