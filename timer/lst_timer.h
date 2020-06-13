@@ -2,6 +2,7 @@
 #define LST_TIMER
 
 #include <time.h>
+#include <netinet/in.h>
 class util_timer;
 //用户数据结构：客户端socket地址、socket文件描述符，定时器
 struct client_data{
