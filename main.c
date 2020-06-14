@@ -15,10 +15,13 @@
 #include "./threadpool/threadpool.h"
 #include "./lock/lock.h"
 #include "./timer/lst_timer.h"
+#include "./log/log.h"
 #define MAX_FD 65536           //最大文件描述符
 #define MAX_EVENT_NUMBER 10000 //最大事件数
 #define BUFFER_SIZE 1024
 #define TIMESLOT 5             //最小超时单位
+
+#define SYNLOG //同步写日志
 
 struct fds{
     int epollfd;
@@ -69,6 +72,9 @@ void show_error(int connfd,const char* info){
     close(connfd);
 }
 int main(int argc, char *argv[]){
+#ifdef SYNLOG
+    Log::get_instance()->init("./mylog.log", 8192, 2000000, 0); //同步日志模型
+#endif
     if(argc<2){
         printf("usage: %s ip_address port_number",basename(argv[0]));
         return 1;
@@ -137,7 +143,7 @@ int main(int argc, char *argv[]){
     while(!stop_server){
         int number = epoll_wait(epollfd, events, MAX_EVENT_NUMBER, -1);
         if((number<0)&&(errno!=EINTR)){
-            printf("epoll failure\n");
+            LOG_ERROR("%s","epoll failure");
             break;
         }
         for(int i=0;i<number;i++){
@@ -149,11 +155,12 @@ int main(int argc, char *argv[]){
 
                 int connfd=accept(listenfd,(struct sockaddr*)&client_address,&client_addrlength);
                 if(connfd<0){
-                    printf("errno is: %d\n",errno);
+                    LOG_ERROR("%s:errno is: %d","accept error",errno);
                     continue;
                 }
                 if(http_conn::m_user_count>=MAX_FD){
                     show_error(connfd,"Internal server busy");
+                    LOG_ERROR("%s","Internal server busy");
                     continue;
                 }
                 /*初始化客户连接*/
@@ -183,11 +190,16 @@ int main(int argc, char *argv[]){
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(users[sockfd].read()){
+                    LOG_INFO("deal with the client(%s)",inet_ntoa(users[sockfd].get_address()->sin_addr));
+                    Log::get_instance()->flush();
                     pool->append(users+sockfd);
                     if(timer){
                         time_t cur=time(NULL);
                         timer->expire=cur+3*TIMESLOT;
+                        LOG_INFO("%s","adjust time once");
+                        Log::get_instance()->flush();
                         timer_lst.adjust_timer(timer);
+
                     }
                 }
                 else{
@@ -203,15 +215,21 @@ int main(int argc, char *argv[]){
 
                 if(!users[sockfd].write()){
                    // users[sockfd].close_conn();
+                    
                     timer->cb_func(&users_timer[sockfd]);
                     if(timer){
+
                         timer_lst.del_timer(timer);
                     }
                 }
                 else{
+                    LOG_INFO("send data to the client(%s)",inet_ntoa(users[sockfd].get_address()->sin_addr));
+                    Log::get_instance()->flush();
                     if(timer){
                         time_t cur=time(NULL);
                         timer->expire=cur+3*TIMESLOT;
+                        LOG_INFO("%s","adjust time once");
+                        Log::get_instance()->flush();
                         timer_lst.adjust_timer(timer);
                     }
                 }
