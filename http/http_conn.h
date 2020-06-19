@@ -20,6 +20,8 @@
 #include "../lock/lock.h"
 #include <sys/wait.h>
 #include <sys/uio.h>
+
+#include "../CGImysql/sql_connection_pool.h"
 class http_conn{
 public:
     /*文件名的最大长度*/
@@ -82,6 +84,8 @@ public:
     {
         return &m_address;
     }
+    void initmysql_result(connection_pool *connPool);
+    //void initresultFile(connection_pool *connPool);
 private:
     /*初始化连接*/
     void init();

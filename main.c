@@ -16,10 +16,14 @@
 #include "./lock/lock.h"
 #include "./timer/lst_timer.h"
 #include "./log/log.h"
+#include "./CGImysql/sql_connection_pool.h"
+
 #define MAX_FD 65536           //最大文件描述符
 #define MAX_EVENT_NUMBER 10000 //最大事件数
 #define BUFFER_SIZE 1024
 #define TIMESLOT 5             //最小超时单位
+
+#define SYNSQL //同步数据库校验
 
 #define SYNLOG //同步写日志
 
@@ -81,6 +85,8 @@ int main(int argc, char *argv[]){
     }
     int port = atoi(argv[1]);
 
+    //单例模式创建数据库连接池
+    connection_pool *connPool = connection_pool::GetInstance("localhost", "gzy", "password", "gzydb", 3306, 8);
     //创建线程池
     threadpool<http_conn>* pool=NULL;
     try{
@@ -94,6 +100,10 @@ int main(int argc, char *argv[]){
     assert(users);
     int user_count=0;
 
+    #ifdef SYNSQL
+    //初始化数据库读取表
+    users->initmysql_result(connPool);
+    #endif
     //创建套接字
     int listenfd=socket(PF_INET,SOCK_STREAM,0);
     assert(listenfd>0);
@@ -271,5 +281,6 @@ int main(int argc, char *argv[]){
     delete [] users;
     delete[] users_timer;
     delete pool;
+    connPool->DestroyPool();
     return 0;
 }
