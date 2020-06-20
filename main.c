@@ -107,7 +107,6 @@ int main(int argc, char *argv[]){
     //创建套接字
     int listenfd=socket(PF_INET,SOCK_STREAM,0);
     assert(listenfd>0);
-    
     int ret=0;
     struct sockaddr_in address;
     address.sin_family=AF_INET;
@@ -131,7 +130,6 @@ int main(int argc, char *argv[]){
 
     addfd(epollfd,listenfd,false);
     http_conn::m_epollfd=epollfd;
-
     //创建管道（定时器）
     ret=socketpair(PF_UNIX,SOCK_STREAM,0,pipefd);
     assert(ret!=-1);
@@ -149,7 +147,6 @@ int main(int argc, char *argv[]){
     bool stop_server=false;
     //每隔TIMESLOT时间触发SIGALRM信号
     alarm(TIMESLOT);
-
     while(!stop_server){
         int number = epoll_wait(epollfd, events, MAX_EVENT_NUMBER, -1);
         if((number<0)&&(errno!=EINTR)){
