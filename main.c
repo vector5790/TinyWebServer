@@ -144,6 +144,7 @@ int main(int argc, char *argv[]){
             int sockfd=events[i].data.fd;
             //处理新到的客户连接
             if(sockfd==listenfd){
+                printf("1\n");
                 struct sockaddr_in client_address;
                 socklen_t client_addrlength=sizeof(client_address);
 
@@ -180,9 +181,11 @@ int main(int argc, char *argv[]){
             }
             //处理客户连接上接收到的数据
             else if(events[i].events&EPOLLIN){
+                printf("3\n");
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(users[sockfd].read()){
+                    printf("3.1\n");
                     pool->append(users+sockfd);
                     if(timer){
                         time_t cur=time(NULL);
@@ -191,6 +194,7 @@ int main(int argc, char *argv[]){
                     }
                 }
                 else{
+                    printf("3.2\n");
                     //users[sockfd].close_conn();
                     timer->cb_func(&users_timer[sockfd]);
                     if(timer){
