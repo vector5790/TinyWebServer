@@ -96,7 +96,6 @@ void connection_pool::DestroyPool(){
         pthread_mutex_unlock(&lock);
     }
     pthread_mutex_unlock(&lock);
-
 }
 //当前空闲的连接数
 int connection_pool::GetFreeConn(){
