@@ -65,10 +65,14 @@ void timer_handler(){
 }
 
 void cb_func(client_data *user_data){
+    printf("cb_func\n");
     epoll_ctl(epollfd,EPOLL_CTL_DEL,user_data->sockfd,0);
     assert(user_data);
     close(user_data->sockfd);
     http_conn::m_user_count--;
+
+    LOG_INFO("close fd %d", user_data->sockfd);
+    Log::get_instance()->flush();
 }
 void show_error(int connfd,const char* info){
     printf("%s",info);
@@ -148,7 +152,9 @@ int main(int argc, char *argv[]){
     //每隔TIMESLOT时间触发SIGALRM信号
     alarm(TIMESLOT);
     while(!stop_server){
+        
         int number = epoll_wait(epollfd, events, MAX_EVENT_NUMBER, -1);
+        printf("!%d\n",number);
         if((number<0)&&(errno!=EINTR)){
             LOG_ERROR("%s","epoll failure");
             break;
@@ -157,6 +163,7 @@ int main(int argc, char *argv[]){
             int sockfd=events[i].data.fd;
             //处理新到的客户连接
             if(sockfd==listenfd){
+                printf("1 start\n");
                 struct sockaddr_in client_address;
                 socklen_t client_addrlength=sizeof(client_address);
 
@@ -182,21 +189,26 @@ int main(int argc, char *argv[]){
                 timer->expire=cur+3*TIMESLOT;
                 users_timer[connfd].timer=timer;
                 timer_lst.add_timer(timer);
+                printf("1 end\n");
             }
             else if(events[i].events&(EPOLLRDHUP|EPOLLHUP|EPOLLERR)){
                 /*有异常，直接关闭客户连接*/
                 //users[sockfd].close_conn();
+                printf("2 start\n");
                 util_timer *timer=users_timer[sockfd].timer;
                 timer->cb_func(&users_timer[sockfd]);
                 if(timer){
                     timer_lst.del_timer(timer);
                 }
+                printf("2 end\n");
             }
             //处理客户连接上接收到的数据
             else if(events[i].events&EPOLLIN){
+                printf("3 start\n");
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(users[sockfd].read()){
+                     printf("3.1 start\n");
                     LOG_INFO("deal with the client(%s)",inet_ntoa(users[sockfd].get_address()->sin_addr));
                     Log::get_instance()->flush();
                     pool->append(users+sockfd);
@@ -208,16 +220,24 @@ int main(int argc, char *argv[]){
                         timer_lst.adjust_timer(timer);
 
                     }
+                     printf("3.1 end\n");
                 }
                 else{
                     //users[sockfd].close_conn();
+                     printf("3.2 start\n");
                     timer->cb_func(&users_timer[sockfd]);
+                    printf("3.3\n");
                     if(timer){
+                        printf("3.4\n");
                         timer_lst.del_timer(timer);
+                        printf("3.5\n");
                     }
+                     printf("3.2 end\n");
                 }
+                printf("3 end\n");
             }
             else if(events[i].events&EPOLLOUT){
+                printf("4 start\n");
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(!users[sockfd].write()){
@@ -240,8 +260,10 @@ int main(int argc, char *argv[]){
                         timer_lst.adjust_timer(timer);
                     }
                 }
+                 printf("4 end\n");
             }
             else if((sockfd==pipefd[0])&&(events[i].events&EPOLLIN)){
+                 printf("5 start\n");
                 int sig;
                 char signals[1024];
                 ret=recv(pipefd[0],signals,sizeof(signals),0);
@@ -261,6 +283,7 @@ int main(int argc, char *argv[]){
                         }
                     }
                 }
+                 printf("5 end\n");
             }
             else{
                 printf("something else happened\n");
