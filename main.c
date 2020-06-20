@@ -140,10 +140,12 @@ int main(int argc, char *argv[]){
             printf("epoll failure\n");
             break;
         }
+        printf("number:%d\n",number);
         for(int i=0;i<number;i++){
             int sockfd=events[i].data.fd;
             //处理新到的客户连接
             if(sockfd==listenfd){
+                printf("1\n");
                 struct sockaddr_in client_address;
                 socklen_t client_addrlength=sizeof(client_address);
 
@@ -170,6 +172,7 @@ int main(int argc, char *argv[]){
                 timer_lst.add_timer(timer);
             }
             else if(events[i].events&(EPOLLRDHUP|EPOLLHUP|EPOLLERR)){
+                printf("2\n");
                 /*有异常，直接关闭客户连接*/
                 //users[sockfd].close_conn();
                 util_timer *timer=users_timer[sockfd].timer;
@@ -180,6 +183,7 @@ int main(int argc, char *argv[]){
             }
             //处理客户连接上接收到的数据
             else if(events[i].events&EPOLLIN){
+                printf("3\n");
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(users[sockfd].read()){
@@ -191,6 +195,7 @@ int main(int argc, char *argv[]){
                     }
                 }
                 else{
+                    printf("3.2\n");
                     //users[sockfd].close_conn();
                     timer->cb_func(&users_timer[sockfd]);
                     if(timer){
@@ -199,6 +204,7 @@ int main(int argc, char *argv[]){
                 }
             }
             else if(events[i].events&EPOLLOUT){
+                printf("4\n");
                 util_timer *timer=users_timer[sockfd].timer;
 
                 if(!users[sockfd].write()){
@@ -217,6 +223,7 @@ int main(int argc, char *argv[]){
                 }
             }
             else if((sockfd==pipefd[0])&&(events[i].events&EPOLLIN)){
+                printf("5\n");
                 int sig;
                 char signals[1024];
                 ret=recv(pipefd[0],signals,sizeof(signals),0);
