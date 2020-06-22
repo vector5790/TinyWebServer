@@ -94,6 +94,7 @@ void http_conn::init(int sockfd,const sockaddr_in& addr){
     init();
 }
 void http_conn::init(){
+    
     m_check_state=CHECK_STATE_REQUESTLINE;
     m_linger=false;
 
@@ -106,6 +107,9 @@ void http_conn::init(){
     m_check_index=0;
     m_read_index=0;
     m_write_index=0;
+
+    cgi=0;
+
     memset(m_read_buf,'\0',READ_BUFFER_SIZE);
     memset(m_write_buf,'\0',WRITE_BUFFER_SIZE);
     memset(m_real_file,'\0',FILENAME_LEN);
@@ -171,12 +175,11 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char* text){
     char* method=text;
     /*strcasecmp忽略大小写比较字符串*/
     if(strcasecmp(method,"GET")==0){
-        printf("GET\n");
         m_method=GET;
     }
     else if(strcasecmp(method,"POST")==0){
-        printf("POST\n");
         m_method=POST;
+        cgi=1;
     }
     else return BAD_REQUEST;
     /*size_t strspn(const char *str1, const char *str2) 检索字符串 str1 中第一个不在字符串 str2 中出现的字符下标
@@ -189,7 +192,6 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char* text){
     *m_version++='\0';
     /* 跳过URL和version之间可能存在的空格*/
     m_version+=strspn(m_version," \t");
-    printf("%s\n",m_version);
     if(strcasecmp(m_version,"HTTP/1.1")!=0){
         return BAD_REQUEST;
     }
@@ -198,10 +200,15 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char* text){
         /*strchr函数功能为在一个串中查找给定字符的第一个匹配之处*/
         m_url=strchr(m_url,'/');
     }
-    printf("url:%s\n",m_url);
+    if (strncasecmp(m_url, "https://", 8) == 0)
+    {
+        m_url += 8;
+        m_url = strchr(m_url, '/');
+    }
     if(!m_url||m_url[0]!='/'){
         return BAD_REQUEST;
     }
+    if(strlen(m_url)==1) strcat(m_url,"judge.html");
     m_check_state=CHECK_STATE_HEADER;
     return NO_REQUEST;
 }
@@ -235,7 +242,8 @@ http_conn::HTTP_CODE http_conn::parse_header(char* text){
         m_host=text;
     }
     else{
-        printf("oop! unknow header %s\n",text);
+        LOG_INFO("oop!unknow header: %s", text);
+        Log::get_instance()->flush();
     }
     return NO_REQUEST;
 }
@@ -254,8 +262,8 @@ http_conn::HTTP_CODE http_conn::process_read(){
     char* text=0;
     while(((m_check_state==CHECK_STATE_CONTENT)&&(line_status==LINE_OK))||((line_status=parse_line())==LINE_OK)){
         text=get_line();
-        m_start_line=m_check_index;
-        printf("got 1 http line: %s\n",text);
+        LOG_INFO("got 1 http line: %s", text);
+        Log::get_instance()->flush();
         switch(m_check_state){
             case CHECK_STATE_REQUESTLINE:{
                 ret=parse_request_line(text);
@@ -292,7 +300,104 @@ http_conn::HTTP_CODE http_conn::process_read(){
 http_conn::HTTP_CODE http_conn::do_request(){
     strcpy(m_real_file,doc_root);
     int len=strlen(doc_root);
-    strncpy(m_real_file+len,m_url,FILENAME_LEN-len-1);
+    //strrchr() 函数查找字符在指定字符串中从右面开始的第一次出现的位置，如果成功，返回该字符以及其后面的字符
+    const char *p=strrchr(m_url,'/');
+    if(cgi==1&&(*(p+1)=='2'||*(p+1)=='3')){
+        //根据标志判断是登录检测还是注册检测
+        char flag = m_url[1];
+        char *m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/");
+        strcat(m_url_real,m_url+2);
+        strncpy(m_real_file+len,m_url_real,FILENAME_LEN-len-1);
+        free(m_url_real);
+        //提取用户名密码
+        char name[100],password[100];
+        //user=123&password=123
+        int i;
+        for(i=5;m_string[i]!='&';++i){
+            name[i-5]=m_string[i];
+        }
+        name[i-5]='\0';
+    
+        int j=0;
+        for(i=i+10;m_string[i]!='\0';++i,++j){
+            password[j]=m_string[i];
+        }
+        password[j]='\0';
+        pthread_mutex_t lock;
+        pthread_mutex_init(&lock,NULL);
+        //注册
+        if(*(p+1)=='3'){
+            char *sql_insert=(char*)malloc(sizeof(char)*200);
+            strcpy(sql_insert,"INSERT INTO user(username,passwd) VALUES(");
+            strcat(sql_insert,"'");
+            strcat(sql_insert,name);
+            strcat(sql_insert,"', '");
+            strcat(sql_insert,password);
+            strcat(sql_insert,"')");
+
+            //先检测数据库中是否有重名的,没有重名的，进行增加数据
+            if(users.find(name)==users.end()){
+                pthread_mutex_lock(&lock);
+                MYSQL* mysql=NULL;
+                int res=mysql_query(mysql,sql_insert);
+
+                users.insert(pair<string,string>(name,password));
+                pthread_mutex_unlock(&lock);
+                if(!res) strcpy(m_url,"/log.html");
+                else strcpy(m_url,"/registerError.html");
+            }
+            else{
+                strcpy(m_url,"/registerError.html");
+            }
+        }
+        //登录
+        else if(*(p+1)=='2'){
+            if(users.find(name)!=users.end()&&users[name]==password){
+                strcpy(m_url,"/welcome.html");
+            }
+            else{
+                strcpy(m_url,"/logError.html");
+            }
+        }
+    }
+
+    //跳转注册页面，GET
+    if(*(p+1)=='0'){
+        char* m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/register.html");
+        strncpy(m_real_file+len,m_url_real,strlen(m_url_real));
+        free(m_url_real);
+    }
+    //跳转登录页面，GET
+    else if(*(p+1)=='1'){
+        char* m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/log.html");
+        strncpy(m_real_file+len,m_url_real,strlen(m_url_real));
+        free(m_url_real);
+    }
+    //显示图片页面，POST
+    else if(*(p+1)=='5'){
+        char* m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/picture.html");
+        strncpy(m_real_file+len,m_url_real,strlen(m_url_real));
+        free(m_url_real);
+    }
+    //显示视频页面，POST
+    else if(*(p+1)=='6'){
+        char* m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/video.html");
+        strncpy(m_real_file+len,m_url_real,strlen(m_url_real));
+        free(m_url_real);
+    }
+    //显示关注页面，POST
+    else if(*(p+1)=='7'){
+        char* m_url_real=(char*)malloc(sizeof(char)*200);
+        strcpy(m_url_real,"/fans.html");
+        strncpy(m_real_file+len,m_url_real,strlen(m_url_real));
+        free(m_url_real);
+    }
+    else strncpy(m_real_file+len,m_url,FILENAME_LEN-len-1);
     if(stat(m_real_file,&m_file_stat)<0){
         return NO_RESOURCE;
     }
@@ -371,6 +476,8 @@ bool http_conn::add_response(const char* format,...){
     m_write_index+=len;
     //清空可变参列表
     va_end(arg_list);
+    LOG_INFO("request:%s", m_write_buf);
+    Log::get_instance()->flush();
     return true;
 }
 bool http_conn::add_content(const char* content){

@@ -144,5 +144,8 @@ private:
     struct stat m_file_stat;
     struct iovec m_iv[2];
     int m_iv_count; 
+
+    int cgi;
+    char *m_string; //存储请求头数据
 };
 #endif

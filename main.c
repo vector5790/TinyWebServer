@@ -185,7 +185,6 @@ int main(int argc, char *argv[]){
                 timer->expire=cur+3*TIMESLOT;
                 users_timer[connfd].timer=timer;
                 timer_lst.add_timer(timer);
-                printf("1 end\n");
             }
             else if(events[i].events&(EPOLLRDHUP|EPOLLHUP|EPOLLERR)){
                 /*有异常，直接关闭客户连接*/
