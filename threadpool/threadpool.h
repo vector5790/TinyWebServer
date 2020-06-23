@@ -56,13 +56,16 @@ threadpool<T>::~threadpool(){
 }
 template<typename T>
 bool threadpool<T>::append(T* request){
+    printf("thread append start\n");
     m_queuelocker.lock();
     if(m_workqueue.size()>m_max_requests){
         m_queuelocker.unlock();
         return false;
     }
+    printf("...\n");
     m_workqueue.push_back(request);
     m_queuelocker.unlock();
+    printf("!\n");
     m_queuestat.post();
     return true;
 }

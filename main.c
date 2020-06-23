@@ -164,6 +164,7 @@ int main(int argc, char *argv[]){
                 socklen_t client_addrlength=sizeof(client_address);
 
                 int connfd=accept(listenfd,(struct sockaddr*)&client_address,&client_addrlength);
+                printf("connfd:%d\n",connfd);
                 if(connfd<0){
                     LOG_ERROR("%s:errno is: %d","accept error",errno);
                     continue;
@@ -185,7 +186,6 @@ int main(int argc, char *argv[]){
                 timer->expire=cur+3*TIMESLOT;
                 users_timer[connfd].timer=timer;
                 timer_lst.add_timer(timer);
-                printf("1 end\n");
             }
             else if(events[i].events&(EPOLLRDHUP|EPOLLHUP|EPOLLERR)){
                 /*有异常，直接关闭客户连接*/
@@ -220,7 +220,6 @@ int main(int argc, char *argv[]){
             //处理客户连接上接收到的数据
             else if(events[i].events&EPOLLIN){
                 util_timer *timer=users_timer[sockfd].timer;
-
                 if(users[sockfd].read()){
                     LOG_INFO("deal with the client(%s)",inet_ntoa(users[sockfd].get_address()->sin_addr));
                     Log::get_instance()->flush();

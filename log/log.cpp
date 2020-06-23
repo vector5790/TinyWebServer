@@ -39,19 +39,19 @@ bool Log::init(const char *file_name, int log_buf_size, int split_lines, int max
     struct tm my_tm=*sys_tm;
 
     const char *p=strrchr(file_name,'/');
-    char log_full_time[256]={0};
+    char log_full_name[300]={0};
 
     if(p==NULL){
-        snprintf(log_full_time,255,"%d_%02d_%02d_%s",my_tm.tm_year+1900,my_tm.tm_mon+1,my_tm.tm_mday,file_name);
+        snprintf(log_full_name,298,"%d_%02d_%02d_%s",my_tm.tm_year+1900,my_tm.tm_mon+1,my_tm.tm_mday,file_name);
     }
     else{
         strcpy(log_name,p+1);
         strncpy(dir_name,file_name,p-file_name+1);
 
-        snprintf(log_full_time,255,"%s%d_%02d_%02d_%s",dir_name,my_tm.tm_year+1900,my_tm.tm_mon+1,my_tm.tm_mday,file_name);
+        snprintf(log_full_name,298,"%s%d_%02d_%02d_%s",dir_name,my_tm.tm_year+1900,my_tm.tm_mon+1,my_tm.tm_mday,log_name);
     }
     m_today=my_tm.tm_mday;
-    m_fp=fopen(log_full_time,"a");
+    m_fp=fopen(log_full_name,"a");
     if(m_fp==NULL){
         return false;
     }
@@ -94,6 +94,8 @@ void Log::write_log(int level, const char *format, ...){
         //如果日志创建时间不是今天，则创建今天的日志
         if(m_today!=my_tm.tm_mday){
             snprintf(new_log,259,"%s%s%s",dir_name,tail,log_name);
+            m_today = my_tm.tm_mday;
+            m_count = 0;
         }
         //日志行数超过了最大行，名字加上后缀编号（m_count/m_split_lines）
         else{
@@ -102,7 +104,6 @@ void Log::write_log(int level, const char *format, ...){
         m_fp=fopen(new_log,"a");
     }
     pthread_mutex_unlock(m_mutex);
-
     va_list valst;
     va_start(valst,format);
 
@@ -116,6 +117,7 @@ void Log::write_log(int level, const char *format, ...){
     m_buf[n+m+1]='\0';
     log_str=m_buf;
     pthread_mutex_unlock(m_mutex);
+
     //异步日志，将日志信息加入阻塞队列，
     if(m_is_async&&!m_log_queue->full()){
         m_log_queue->push(log_str);
