@@ -117,7 +117,7 @@ private:
 public:
     static int m_epollfd;
     static int m_user_count;
-
+    MYSQL* mysql;
 private:
     int m_sockfd;
     sockaddr_in m_address;
@@ -147,5 +147,7 @@ private:
 
     int cgi;
     char *m_string; //存储请求头数据
+    int bytes_to_send;
+    int bytes_have_send;
 };
 #endif

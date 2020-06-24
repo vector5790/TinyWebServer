@@ -1,0 +1,512 @@
+2020-06-23 21:35:58.502972 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:35:58.503496 [info]: adjust time once
+2020-06-23 21:35:58.510532 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:35:58.510958 [info]: got 1 http line: GET
+2020-06-23 21:35:58.511162 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.511347 [info]: got 1 http line: GET
+2020-06-23 21:35:58.511527 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.511723 [info]: got 1 http line: GET
+2020-06-23 21:35:58.514161 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.514495 [info]: got 1 http line: GET
+2020-06-23 21:35:58.515069 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.515383 [info]: got 1 http line: GET
+2020-06-23 21:35:58.515604 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.515797 [info]: got 1 http line: GET
+2020-06-23 21:35:58.516237 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.516530 [info]: got 1 http line: GET
+2020-06-23 21:35:58.517149 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.517949 [info]: got 1 http line: GET
+2020-06-23 21:35:58.518267 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.518447 [info]: got 1 http line: GET
+2020-06-23 21:35:58.518701 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.518922 [info]: got 1 http line: GET
+2020-06-23 21:35:58.519111 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.519300 [info]: got 1 http line: GET
+2020-06-23 21:35:58.519487 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.519693 [info]: got 1 http line: GET
+2020-06-23 21:35:58.519880 [info]: oop!unknow header: GET
+2020-06-23 21:35:58.520063 [info]: got 1 http line: GET
+2020-06-23 21:35:58.520247 [info]: oop!unknow header: GET
+2020-06-23 21:36:14.476823 [info]: close fd 16
+2020-06-23 21:50:44.461671 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:50:44.462089 [info]: adjust time once
+2020-06-23 21:50:44.462202 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:50:44.462560 [info]: got 1 http line: GET
+2020-06-23 21:50:44.462863 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.463147 [info]: got 1 http line: GET
+2020-06-23 21:50:44.463401 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.463638 [info]: got 1 http line: GET
+2020-06-23 21:50:44.463902 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.464158 [info]: got 1 http line: GET
+2020-06-23 21:50:44.464449 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.465795 [info]: got 1 http line: GET
+2020-06-23 21:50:44.466941 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.467303 [info]: got 1 http line: GET
+2020-06-23 21:50:44.467574 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.467944 [info]: got 1 http line: GET
+2020-06-23 21:50:44.468230 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.468524 [info]: got 1 http line: GET
+2020-06-23 21:50:44.468764 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.468999 [info]: got 1 http line: GET
+2020-06-23 21:50:44.469163 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.469464 [info]: got 1 http line: GET
+2020-06-23 21:50:44.469739 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.470020 [info]: got 1 http line: GET
+2020-06-23 21:50:44.470307 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.470570 [info]: got 1 http line: GET
+2020-06-23 21:50:44.470858 [info]: oop!unknow header: GET
+2020-06-23 21:50:44.471045 [info]: got 1 http line: GET
+2020-06-23 21:50:44.471242 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.617544 [info]: close fd 17
+2020-06-23 21:51:00.617916 [info]: close fd 16
+2020-06-23 21:51:00.618225 [info]: close fd 18
+2020-06-23 21:51:00.980346 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:51:00.981116 [info]: adjust time once
+2020-06-23 21:51:00.981914 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:51:00.982611 [info]: got 1 http line: GET
+2020-06-23 21:51:00.983028 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.983267 [info]: got 1 http line: GET
+2020-06-23 21:51:00.983492 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.983685 [info]: got 1 http line: GET
+2020-06-23 21:51:00.983932 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.984118 [info]: got 1 http line: GET
+2020-06-23 21:51:00.984364 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.984578 [info]: got 1 http line: GET
+2020-06-23 21:51:00.984797 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.985025 [info]: got 1 http line: GET
+2020-06-23 21:51:00.985213 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.985399 [info]: got 1 http line: GET
+2020-06-23 21:51:00.985741 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.985976 [info]: got 1 http line: GET
+2020-06-23 21:51:00.986175 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.986699 [info]: got 1 http line: GET
+2020-06-23 21:51:00.987044 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.987786 [info]: got 1 http line: GET
+2020-06-23 21:51:00.988127 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.988374 [info]: got 1 http line: GET
+2020-06-23 21:51:00.988689 [info]: oop!unknow header: GET
+2020-06-23 21:51:00.989019 [info]: got 1 http line: GET
+2020-06-23 21:51:00.989261 [info]: oop!unknow header: GET
+2020-06-23 21:51:04.140568 [info]: close fd 16
+2020-06-23 21:51:29.024722 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:51:29.025190 [info]: adjust time once
+2020-06-23 21:51:29.025275 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:51:29.025766 [info]: got 1 http line: GET
+2020-06-23 21:51:29.026000 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.026192 [info]: got 1 http line: GET
+2020-06-23 21:51:29.026388 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.026577 [info]: got 1 http line: GET
+2020-06-23 21:51:29.026771 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.026979 [info]: got 1 http line: GET
+2020-06-23 21:51:29.027115 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.027282 [info]: got 1 http line: GET
+2020-06-23 21:51:29.027498 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.027696 [info]: got 1 http line: GET
+2020-06-23 21:51:29.027903 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.028045 [info]: got 1 http line: GET
+2020-06-23 21:51:29.028198 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.028397 [info]: got 1 http line: GET
+2020-06-23 21:51:29.028621 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.028820 [info]: got 1 http line: GET
+2020-06-23 21:51:29.028990 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.029139 [info]: got 1 http line: GET
+2020-06-23 21:51:29.029353 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.029543 [info]: got 1 http line: GET
+2020-06-23 21:51:29.029715 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.029914 [info]: got 1 http line: GET
+2020-06-23 21:51:29.030476 [info]: oop!unknow header: GET
+2020-06-23 21:51:29.030680 [info]: got 1 http line: GET
+2020-06-23 21:51:29.031009 [info]: oop!unknow header: GET
+2020-06-23 21:51:46.132202 [info]: close fd 17
+2020-06-23 21:51:46.132951 [info]: close fd 16
+2020-06-23 21:51:46.133912 [info]: close fd 18
+2020-06-23 21:52:08.759303 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:52:08.759627 [info]: adjust time once
+2020-06-23 21:52:08.759693 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:52:08.760275 [info]: got 1 http line: GET
+2020-06-23 21:52:08.760500 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.760699 [info]: got 1 http line: GET
+2020-06-23 21:52:08.760862 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.760990 [info]: got 1 http line: GET
+2020-06-23 21:52:08.761112 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.761265 [info]: got 1 http line: GET
+2020-06-23 21:52:08.761571 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.761783 [info]: got 1 http line: GET
+2020-06-23 21:52:08.761980 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.762164 [info]: got 1 http line: GET
+2020-06-23 21:52:08.762778 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.763105 [info]: got 1 http line: GET
+2020-06-23 21:52:08.763297 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.763524 [info]: got 1 http line: GET
+2020-06-23 21:52:08.763718 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.763944 [info]: got 1 http line: GET
+2020-06-23 21:52:08.764143 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.764366 [info]: got 1 http line: GET
+2020-06-23 21:52:08.764624 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.764855 [info]: got 1 http line: GET
+2020-06-23 21:52:08.765050 [info]: oop!unknow header: GET
+2020-06-23 21:52:08.765239 [info]: got 1 http line: GET
+2020-06-23 21:52:08.765462 [info]: oop!unknow header: GET
+2020-06-23 21:52:26.140252 [info]: close fd 17
+2020-06-23 21:52:26.141279 [info]: close fd 16
+2020-06-23 21:52:26.142456 [info]: close fd 18
+2020-06-23 21:57:30.674818 [info]: deal with the client(127.0.0.1)
+2020-06-23 21:57:30.675135 [info]: adjust time once
+2020-06-23 21:57:30.675209 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 21:57:30.675549 [info]: got 1 http line: GET
+2020-06-23 21:57:30.675755 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.675954 [info]: got 1 http line: GET
+2020-06-23 21:57:30.676091 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.676216 [info]: got 1 http line: GET
+2020-06-23 21:57:30.676338 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.676537 [info]: got 1 http line: GET
+2020-06-23 21:57:30.676713 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.676902 [info]: got 1 http line: GET
+2020-06-23 21:57:30.677040 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.677165 [info]: got 1 http line: GET
+2020-06-23 21:57:30.677288 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.677617 [info]: got 1 http line: GET
+2020-06-23 21:57:30.677849 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.678049 [info]: got 1 http line: GET
+2020-06-23 21:57:30.678235 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.678448 [info]: got 1 http line: GET
+2020-06-23 21:57:30.678632 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.678807 [info]: got 1 http line: GET
+2020-06-23 21:57:30.678984 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.679171 [info]: got 1 http line: GET
+2020-06-23 21:57:30.679351 [info]: oop!unknow header: GET
+2020-06-23 21:57:30.679550 [info]: got 1 http line: GET
+2020-06-23 21:57:30.679723 [info]: oop!unknow header: GET
+2020-06-23 21:57:46.197017 [info]: close fd 17
+2020-06-23 21:57:46.197632 [info]: close fd 16
+2020-06-23 21:57:46.198463 [info]: close fd 18
+2020-06-23 22:00:58.936247 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:00:58.936714 [info]: adjust time once
+2020-06-23 22:00:58.936814 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 22:00:58.937308 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:00:58.937525 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:00:58.937769 [info]: got 1 http line: Cache-Control: max-age=0
+2020-06-23 22:00:58.937952 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-06-23 22:00:58.938158 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:00:58.938365 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:00:58.938565 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:00:58.938849 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:00:58.939038 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:00:58.939229 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:00:58.939468 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:00:58.939797 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:00:58.939984 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:00:58.940164 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:00:58.940382 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:00:58.940593 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:00:58.940849 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:00:58.940988 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:00:58.941216 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:00:58.941580 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:00:58.942365 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:00:58.942540 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:00:58.942716 [info]: got 1 http line: 
+2020-06-23 22:00:58.942893 [info]: request:HTTP/1.1 404 Not Found
+
+2020-06-23 22:00:58.943141 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-06-23 22:00:58.943332 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+2020-06-23 22:00:58.943471 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+
+2020-06-23 22:00:58.943653 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+The requested file was not found on this server.
+
+2020-06-23 22:00:58.943900 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:00:58.944151 [info]: adjust time once
+2020-06-23 22:01:13.480083 [info]: close fd 17
+2020-06-23 22:01:13.480767 [info]: close fd 16
+2020-06-23 22:01:18.482434 [info]: close fd 18
+2020-06-23 22:03:52.336536 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:03:52.337460 [info]: adjust time once
+2020-06-23 22:03:52.338289 [info]: got 1 http line: GET /1 HTTP/1.1
+2020-06-23 22:03:52.339421 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:03:52.340075 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:03:52.340810 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:03:52.341400 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:03:52.342127 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:03:52.342666 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:03:52.343210 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:03:52.343724 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:03:52.344177 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:03:52.344603 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:03:52.345081 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:03:52.345510 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:03:52.345990 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:03:52.346462 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:03:52.347029 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:03:52.347469 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:03:52.347943 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:03:52.348375 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:03:52.348878 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:03:52.349579 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:03:52.350505 [info]: got 1 http line: 
+2020-06-23 22:03:52.351790 [info]: request:HTTP/1.1 404 Not Found
+
+2020-06-23 22:03:52.352325 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-06-23 22:03:52.352946 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+2020-06-23 22:03:52.353260 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+
+2020-06-23 22:03:52.353555 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+The requested file was not found on this server.
+
+2020-06-23 22:03:52.353969 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:03:52.354233 [info]: adjust time once
+2020-06-23 22:04:08.511278 [info]: close fd 17
+2020-06-23 22:04:08.511719 [info]: close fd 16
+2020-06-23 22:04:08.512309 [info]: close fd 18
+2020-06-23 22:10:00.348992 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:10:00.349471 [info]: adjust time once
+2020-06-23 22:10:00.349528 [info]: got 1 http line: GET /5 HTTP/1.1
+2020-06-23 22:10:00.350696 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:10:00.350993 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:10:00.351214 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:10:00.351424 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:10:00.351678 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:10:00.351873 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:10:00.352050 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:10:00.352229 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:10:00.352411 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:10:00.352691 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:10:00.353224 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:10:00.353400 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:10:00.353552 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:10:00.353739 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:10:00.353912 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:10:00.354118 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:10:00.354285 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:10:00.354414 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:10:00.354536 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:10:00.354730 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:10:00.354904 [info]: got 1 http line: 
+2020-06-23 22:10:00.355128 [info]: request:HTTP/1.1 404 Not Found
+
+2020-06-23 22:10:00.355290 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-06-23 22:10:00.355419 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+2020-06-23 22:10:00.355544 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+
+2020-06-23 22:10:00.355714 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+The requested file was not found on this server.
+
+2020-06-23 22:10:00.356014 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:10:00.356243 [info]: adjust time once
+2020-06-23 22:10:18.564237 [info]: close fd 17
+2020-06-23 22:10:18.564743 [info]: close fd 16
+2020-06-23 22:10:18.565353 [info]: close fd 18
+2020-06-23 22:23:00.894867 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:23:00.895306 [info]: adjust time once
+2020-06-23 22:23:00.895428 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 22:23:00.895950 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:23:00.896408 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:23:00.896727 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:23:00.897016 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:23:00.897612 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:23:00.898474 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:23:00.898810 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:23:00.899074 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:23:00.899366 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:23:00.899680 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:23:00.900840 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:23:00.902002 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:23:00.902376 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:23:00.902629 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:23:00.902806 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:23:00.903119 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:23:00.903378 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:23:00.903653 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:23:00.904033 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:23:00.904455 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:23:00.905879 [info]: got 1 http line: 
+2020-06-23 22:23:00.907070 [info]: request:HTTP/1.1 404 Not Found
+
+2020-06-23 22:23:00.907462 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-06-23 22:23:00.907705 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+2020-06-23 22:23:00.907996 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+
+2020-06-23 22:23:00.908276 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+The requested file was not found on this server.
+
+2020-06-23 22:23:00.909164 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:23:00.909673 [info]: adjust time once
+2020-06-23 22:23:15.680889 [info]: close fd 16
+2020-06-23 22:23:40.995852 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:23:40.996649 [info]: adjust time once
+2020-06-23 22:23:41.004569 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 22:23:41.004927 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:23:41.005128 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:23:41.005307 [info]: got 1 http line: Cache-Control: max-age=0
+2020-06-23 22:23:41.005547 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-06-23 22:23:41.005749 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:23:41.005928 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:23:41.006092 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:23:41.006256 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:23:41.006445 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:23:41.006609 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:23:41.006803 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:23:41.006971 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:23:41.007130 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:23:41.007288 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:23:41.007486 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:23:41.007657 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:23:41.007864 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:23:41.008032 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:23:41.008193 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:23:41.008416 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:23:41.008621 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:23:41.008881 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:23:41.009065 [info]: got 1 http line: 
+2020-06-23 22:23:41.009309 [info]: request:HTTP/1.1 404 Not Found
+
+2020-06-23 22:23:41.010045 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-06-23 22:23:41.010380 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+2020-06-23 22:23:41.010690 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+
+2020-06-23 22:23:41.010877 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-live
+
+The requested file was not found on this server.
+
+2020-06-23 22:23:41.022010 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:23:41.022528 [info]: adjust time once
+2020-06-23 22:23:57.826883 [info]: close fd 16
+2020-06-23 22:24:35.539244 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:24:35.540026 [info]: adjust time once
+2020-06-23 22:24:35.540356 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 22:24:35.541316 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:24:35.541761 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:24:35.541968 [info]: got 1 http line: Cache-Control: max-age=0
+2020-06-23 22:24:35.542171 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-06-23 22:24:35.542362 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:24:35.542918 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:24:35.543178 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:24:35.544122 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:24:35.544679 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:24:35.544956 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:24:35.545206 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-06-23 22:24:35.545403 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-06-23 22:24:35.545829 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:24:35.546101 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:24:35.546330 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-06-23 22:24:35.546540 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-06-23 22:24:35.546718 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:24:35.546911 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:24:35.547147 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:24:35.547370 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:24:35.547661 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:24:35.547863 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:24:35.548025 [info]: got 1 http line: 
+2020-06-23 22:24:35.548376 [info]: request:HTTP/1.1 200 OK
+
+2020-06-23 22:24:35.548632 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+
+2020-06-23 22:24:35.548826 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-live
+
+2020-06-23 22:24:35.549007 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-live
+
+
+2020-06-23 22:24:35.550241 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:24:35.551548 [info]: adjust time once
+2020-06-23 22:24:35.551902 [info]: close fd 16
+2020-06-23 22:24:35.804385 [info]: deal with the client(127.0.0.1)
+2020-06-23 22:24:35.805398 [info]: adjust time once
+2020-06-23 22:24:35.807500 [info]: got 1 http line: GET / HTTP/1.1
+2020-06-23 22:24:35.807934 [info]: got 1 http line: Host: localhost:9007
+2020-06-23 22:24:35.808154 [info]: got 1 http line: Connection: keep-alive
+2020-06-23 22:24:35.808336 [info]: got 1 http line: Cache-Control: max-age=0
+2020-06-23 22:24:35.808584 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-06-23 22:24:35.809038 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-06-23 22:24:35.809282 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-06-23 22:24:35.824090 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:24:35.824500 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+2020-06-23 22:24:35.829185 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:24:35.830250 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-06-23 22:24:35.832989 [info]: got 1 http line: Sec-Fetch-Site: cross-site
+2020-06-23 22:24:35.833361 [info]: oop!unknow header: Sec-Fetch-Site: cross-site
+2020-06-23 22:24:35.834200 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-06-23 22:24:35.834472 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-06-23 22:24:35.834861 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-06-23 22:24:35.835200 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-06-23 22:24:35.835455 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:24:35.835842 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-06-23 22:24:35.836095 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:24:35.836324 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-06-23 22:24:35.836535 [info]: got 1 http line: 
+2020-06-23 22:24:35.836944 [info]: request:HTTP/1.1 200 OK
+
+2020-06-23 22:24:35.837229 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+
+2020-06-23 22:24:35.837480 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-live
+
+2020-06-23 22:24:35.837731 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-live
+
+
+2020-06-23 22:24:35.838136 [info]: send data to the client(127.0.0.1)
+2020-06-23 22:24:35.838412 [info]: adjust time once
+2020-06-23 22:24:35.839325 [info]: close fd 16
+2020-06-23 22:24:51.924710 [info]: close fd 16
