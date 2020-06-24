@@ -6,10 +6,11 @@
 #include <exception>
 #include <pthread.h>
 #include "../lock/lock.h"
+#include "../CGImysql/sql_connection_pool.h"
 template<typename T>
 class threadpool{
 public:
-    threadpool(int thread_number=8,int max_requests=10000);
+    threadpool(connection_pool *connPool,int thread_number=8,int max_requests=10000);
     ~threadpool();
     //向请求队列添加任务
     bool append(T* request);
@@ -24,10 +25,11 @@ private:
     locker m_queuelocker;
     sem m_queuestat;//是否有任务需要处理
     bool m_stop;//是否结束线程
+    connection_pool *m_connPool;  //数据库
 };
 template<typename T>
-threadpool<T>::threadpool(int thread_number,int max_requests):
-    m_thread_number(thread_number),m_max_requests(max_requests),m_stop(false),m_threads(NULL){
+threadpool<T>::threadpool(connection_pool *connPool,int thread_number,int max_requests):
+    m_thread_number(thread_number),m_max_requests(max_requests),m_stop(false),m_threads(NULL),m_connPool(connPool){
     if((thread_number<=0)||(max_requests<=0)){
         throw std::exception();
     }
@@ -87,7 +89,9 @@ void threadpool<T>::run(){
         if(!request){
             continue;
         }
+        request->mysql = m_connPool->GetConnection();
         request->process();
+        m_connPool->ReleaseConnection(request->mysql);
      }
 }
 #endif
