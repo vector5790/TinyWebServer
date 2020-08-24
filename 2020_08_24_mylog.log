@@ -1,0 +1,189 @@
+2020-08-24 12:53:11.375327 [info]: deal with the client(127.0.0.1)
+2020-08-24 12:53:11.376106 [info]: adjust time once
+2020-08-24 12:53:11.376338 [info]: got 1 http line: GET / HTTP/1.1
+2020-08-24 12:53:11.377288 [info]: got 1 http line: Host: localhost:9007
+2020-08-24 12:53:11.378021 [info]: got 1 http line: Connection: keep-alive
+2020-08-24 12:53:11.378589 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:11.379085 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:11.382163 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:11.382943 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:11.383585 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:11.384850 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:11.385550 [info]: got 1 http line: Sec-Fetch-Site: none
+2020-08-24 12:53:11.386582 [info]: oop!unknow header: Sec-Fetch-Site: none
+2020-08-24 12:53:11.387337 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:11.388352 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:11.388967 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-08-24 12:53:11.389623 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-08-24 12:53:11.390244 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-08-24 12:53:11.390775 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-08-24 12:53:11.391513 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:11.392029 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:11.392691 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:11.393087 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:11.393526 [info]: got 1 http line: 
+2020-08-24 12:53:11.394076 [info]: request file:/home/knopfler/TinyWebServer/root/judge.html
+2020-08-24 12:53:11.410215 [info]: request:HTTP/1.1 200 OK
+
+2020-08-24 12:53:11.410528 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+
+2020-08-24 12:53:11.410719 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-alive
+
+2020-08-24 12:53:11.410986 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-alive
+
+
+2020-08-24 12:53:11.411499 [info]: send data to the client(127.0.0.1)
+2020-08-24 12:53:11.411854 [info]: adjust time once
+2020-08-24 12:53:11.515820 [info]: deal with the client(127.0.0.1)
+2020-08-24 12:53:11.516193 [info]: adjust time once
+2020-08-24 12:53:11.516271 [info]: got 1 http line: GET /favicon.ico HTTP/1.1
+2020-08-24 12:53:11.516663 [info]: got 1 http line: Host: localhost:9007
+2020-08-24 12:53:11.516873 [info]: got 1 http line: Connection: keep-alive
+2020-08-24 12:53:11.517061 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:11.517244 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:11.517456 [info]: got 1 http line: Accept: image/webp,image/apng,image/*,*/*;q=0.8
+2020-08-24 12:53:11.517635 [info]: oop!unknow header: Accept: image/webp,image/apng,image/*,*/*;q=0.8
+2020-08-24 12:53:11.517812 [info]: got 1 http line: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:11.518630 [info]: oop!unknow header: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:11.519652 [info]: got 1 http line: Sec-Fetch-Mode: no-cors
+2020-08-24 12:53:11.520166 [info]: oop!unknow header: Sec-Fetch-Mode: no-cors
+2020-08-24 12:53:11.520803 [info]: got 1 http line: Sec-Fetch-Dest: image
+2020-08-24 12:53:11.521334 [info]: oop!unknow header: Sec-Fetch-Dest: image
+2020-08-24 12:53:11.521638 [info]: got 1 http line: Referer: http://localhost:9007/
+2020-08-24 12:53:11.521844 [info]: oop!unknow header: Referer: http://localhost:9007/
+2020-08-24 12:53:11.522042 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:11.522926 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:11.523727 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:11.524226 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:11.525377 [info]: got 1 http line: 
+2020-08-24 12:53:11.526082 [info]: request file:/home/knopfler/TinyWebServer/root/favicon.ico
+2020-08-24 12:53:11.526895 [info]: request:HTTP/1.1 404 Not Found
+
+2020-08-24 12:53:11.527139 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+
+2020-08-24 12:53:11.527370 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-alive
+
+2020-08-24 12:53:11.527584 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-alive
+
+
+2020-08-24 12:53:11.527784 [info]: request:HTTP/1.1 404 Not Found
+Content-Length: 49
+Connection: keep-alive
+
+The requested file was not found on this server.
+
+2020-08-24 12:53:11.528091 [info]: send data to the client(127.0.0.1)
+2020-08-24 12:53:11.528454 [info]: adjust time once
+2020-08-24 12:53:21.979352 [info]: deal with the client(127.0.0.1)
+2020-08-24 12:53:21.980489 [info]: adjust time once
+2020-08-24 12:53:21.983000 [info]: got 1 http line: POST /1 HTTP/1.1
+2020-08-24 12:53:21.983567 [info]: got 1 http line: Host: localhost:9007
+2020-08-24 12:53:21.984478 [info]: got 1 http line: Connection: keep-alive
+2020-08-24 12:53:21.985028 [info]: got 1 http line: Content-Length: 0
+2020-08-24 12:53:21.985798 [info]: got 1 http line: Cache-Control: max-age=0
+2020-08-24 12:53:21.986207 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-08-24 12:53:21.986505 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:21.986958 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:21.987358 [info]: got 1 http line: Origin: http://localhost:9007
+2020-08-24 12:53:21.987952 [info]: oop!unknow header: Origin: http://localhost:9007
+2020-08-24 12:53:21.988318 [info]: got 1 http line: Content-Type: application/x-www-form-urlencoded
+2020-08-24 12:53:21.988725 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-08-24 12:53:21.989013 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:21.989267 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:21.989518 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:21.990417 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:21.990859 [info]: got 1 http line: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:21.992263 [info]: oop!unknow header: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:21.992598 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:21.992761 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:21.992899 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-08-24 12:53:21.993034 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-08-24 12:53:21.993169 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-08-24 12:53:21.993356 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-08-24 12:53:21.993640 [info]: got 1 http line: Referer: http://localhost:9007/
+2020-08-24 12:53:21.993858 [info]: oop!unknow header: Referer: http://localhost:9007/
+2020-08-24 12:53:21.994124 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:21.994407 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:21.994666 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:21.994886 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:21.995093 [info]: got 1 http line: 
+2020-08-24 12:53:21.995271 [info]: request file:/home/knopfler/TinyWebServer/root/log.html
+2020-08-24 12:53:22.004299 [info]: request:HTTP/1.1 200 OK
+
+2020-08-24 12:53:22.004552 [info]: request:HTTP/1.1 200 OK
+Content-Length: 725
+
+2020-08-24 12:53:22.004759 [info]: request:HTTP/1.1 200 OK
+Content-Length: 725
+Connection: keep-alive
+
+2020-08-24 12:53:22.004944 [info]: request:HTTP/1.1 200 OK
+Content-Length: 725
+Connection: keep-alive
+
+
+2020-08-24 12:53:22.005317 [info]: send data to the client(127.0.0.1)
+2020-08-24 12:53:22.005602 [info]: adjust time once
+2020-08-24 12:53:27.585155 [info]: deal with the client(127.0.0.1)
+2020-08-24 12:53:27.585884 [info]: adjust time once
+2020-08-24 12:53:27.585972 [info]: got 1 http line: POST /2CGISQL.cgi HTTP/1.1
+2020-08-24 12:53:27.586698 [info]: got 1 http line: Host: localhost:9007
+2020-08-24 12:53:27.587001 [info]: got 1 http line: Connection: keep-alive
+2020-08-24 12:53:27.587272 [info]: got 1 http line: Content-Length: 23
+2020-08-24 12:53:27.587768 [info]: got 1 http line: Cache-Control: max-age=0
+2020-08-24 12:53:27.588066 [info]: oop!unknow header: Cache-Control: max-age=0
+2020-08-24 12:53:27.588342 [info]: got 1 http line: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:27.588631 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2020-08-24 12:53:27.588872 [info]: got 1 http line: Origin: http://localhost:9007
+2020-08-24 12:53:27.589288 [info]: oop!unknow header: Origin: http://localhost:9007
+2020-08-24 12:53:27.589639 [info]: got 1 http line: Content-Type: application/x-www-form-urlencoded
+2020-08-24 12:53:27.590294 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2020-08-24 12:53:27.590818 [info]: got 1 http line: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:27.591284 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+2020-08-24 12:53:27.591992 [info]: got 1 http line: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:27.592527 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2020-08-24 12:53:27.593011 [info]: got 1 http line: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:27.593305 [info]: oop!unknow header: Sec-Fetch-Site: same-origin
+2020-08-24 12:53:27.594516 [info]: got 1 http line: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:27.594988 [info]: oop!unknow header: Sec-Fetch-Mode: navigate
+2020-08-24 12:53:27.595293 [info]: got 1 http line: Sec-Fetch-User: ?1
+2020-08-24 12:53:27.595693 [info]: oop!unknow header: Sec-Fetch-User: ?1
+2020-08-24 12:53:27.595971 [info]: got 1 http line: Sec-Fetch-Dest: document
+2020-08-24 12:53:27.596184 [info]: oop!unknow header: Sec-Fetch-Dest: document
+2020-08-24 12:53:27.596412 [info]: got 1 http line: Referer: http://localhost:9007/1
+2020-08-24 12:53:27.596566 [info]: oop!unknow header: Referer: http://localhost:9007/1
+2020-08-24 12:53:27.596768 [info]: got 1 http line: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:27.597750 [info]: oop!unknow header: Accept-Encoding: gzip, deflate, br
+2020-08-24 12:53:27.599353 [info]: got 1 http line: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:27.599933 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9
+2020-08-24 12:53:27.600282 [info]: got 1 http line: 
+2020-08-24 12:53:27.600517 [info]: got 1 http line: user=root&password=root
+2020-08-24 12:53:27.600732 [info]: request file:/home/knopfler/TinyWebServer/root/welcome.html
+2020-08-24 12:53:27.609137 [info]: request:HTTP/1.1 200 OK
+
+2020-08-24 12:53:27.609473 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+
+2020-08-24 12:53:27.609746 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+Connection: keep-alive
+
+2020-08-24 12:53:27.609998 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+Connection: keep-alive
+
+
+2020-08-24 12:53:27.610410 [info]: send data to the client(127.0.0.1)
+2020-08-24 12:53:27.610698 [info]: adjust time once
+2020-08-24 12:53:30.556321 [info]: close fd 17
+2020-08-24 12:53:30.556931 [info]: close fd 18
